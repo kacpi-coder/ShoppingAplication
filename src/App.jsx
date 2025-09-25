@@ -59,7 +59,7 @@ function App() {
 
       <div id="mainFather">
         <div id="add">
-          <h2>Dodaj swoje proukty do listy</h2>
+          <h2>Dodaj swoje produkty do listy</h2>
           <textarea
             rows={4}
             cols={30}
