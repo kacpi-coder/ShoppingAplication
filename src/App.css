@@ -1,42 +1,309 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-image: url("tlo.png");
+   font-family: "Story Script", sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+ .gradient-textarea {
+  background: linear-gradient(#343333,#4b4444) padding-box,
+              conic-gradient(from 0deg, #ff00ff, #00ffff, #ff9900, #00ff99, #ff00ff) border-box !important;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff, 0 0 60px #ff9900, 0 0 80px #00ff99;
+  border: 3px solid transparent;
+  animation: rotateBorder 6s linear infinite;
+  resize: none;
+  color: white; /* żeby tekst był widoczny */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+
+  @keyframes rotateBorder {
+    0% {
+      background: linear-gradient(#111,#111) padding-box, conic-gradient(from 0deg, #ff00ff, #00ffff, #ff9900, #00ff99, #ff00ff) border-box;
+    }
+    100% {
+      background: linear-gradient(#111,#111) padding-box, conic-gradient(from 360deg, #ff00ff, #00ffff, #ff9900, #00ff99, #ff00ff) border-box;
+    }
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+#menu > ul > li
+{
+text-decoration:none;
+list-style:none;
+float:left;
+margin-right:20px;
+padding:20px;
+background-color:#ED6A5A;
+transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+#menu > ul > li:hover{
+  transform: scale(110%);
+  box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.3);
 }
 
-.card {
-  padding: 2em;
+#menu > ul > li > a
+{
+  color:white;
+  text-decoration:none;
 }
 
-.read-the-docs {
-  color: #888;
+#menuFather
+{
+  display:flex;
+  justify-content: center;
+  margin-top:30px;
+}
+
+#mainFather
+{
+  justify-content:space-between;
+  display:flex;
+  margin-top:30px;
+}
+
+main, #left
+{
+  min-height: 700px;
+  border-radius:3px;
+  color:white;
+}
+
+#add, #left, main {
+  flex: 1;                     /* każdy element zajmuje równą część szerokości */
+  max-width: 31%;               /* ograniczamy maksymalną szerokość, żeby nie były za duże */
+  min-height: 700px;            /* zachowujemy wysokość */
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.3);
+}
+
+#add
+{
+  box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.3);
+  border-left: 5px solid #eb5160;
+  border-top: 5px solid #eb5160;
+  padding: 10px;
+  max-height: 700px;
+  background-color: #849e8d;
+  color:white;
+}
+
+#left {
+  box-shadow: -5px 5px 0px rgba(255, 255, 255, 0.3);
+  border-right: 5px solid #eb5160;
+  border-top: 5px solid #eb5160;
+  padding: 10px;
+  max-height: 700px;   /* lub inna wartość odpowiadająca layoutowi */
+  overflow-y: auto;    /* przewijanie gdy zbyt dużo tasków */
+  word-wrap: break-word;
+  background-color: #849e8d;
+}
+
+
+/* Styl dla każdego zadania */
+.task-box {
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  word-wrap: break-word;
+  background-color: #849e8d;       /* to samo co panel left */
+  border: 2px solid #eb5160;       /* czerwony akcent */
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-box:hover {
+  transform: scale(1.02);
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.4);
+}
+
+/* Przycisk X dopasowany do kolorystyki */
+.task-box button {
+  margin-top: 8px;
+  background: #eb5160;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.task-box button:hover {
+  background: #ff6b6b;
+  transform: scale(1.1);
+}
+
+
+main{
+  color:black;
+  background: #e8e8e8;
+  border-top: 6px solid #eb5160;
+  box-shadow: 
+    -5px 0 0px rgba(255, 255, 255, 0.3),  /* lewo */
+    5px 0 0px rgba(255, 255, 255, 0.3),   /* prawo */
+    0 5px 0px rgba(255, 255, 255, 0.3);   /* dół */
+}
+
+
+#left
+{
+  opacity: 0.99;
+  background-color: #849e8d;
+  /*#eb5160*/
+}
+
+
+
+footer{
+  clear:both;
+  width:100%;
+  height:80px;
+  margin-top:15px;
+  background-color: dimgray;
+  opacity:0.7;
+}
+
+p
+{
+  font-size:20px;
+  color:black;
+}
+
+.add-btn {
+  background: none;
+  text-decoration: inherit;
+  font-family: system-ui;
+  font-size: 0.7rem;
+  padding: 1rem;
+  margin-top:1rem;
+  border: 5px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+  cursor: pointer;
+  background-color: rgb(58, 57, 57);
+}
+
+/* Container */
+.clock-wrap {
+  width: 280px;
+  max-width: 90%;
+  margin: 1.5rem auto;
+  text-align: center;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  user-select: none;
+}
+
+/* Analog clock */
+.analog {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  max-width: 85vw;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #f4f4f4 0%, #e0e0e0 100%);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12), inset 0 6px 18px rgba(255,255,255,0.25);
+  border: 6px solid rgba(235,81,96,0.95);
+}
+
+/* wskazówki - KLUCZOWE: translate(-50%,-100%) + transform-origin: 50% 100% */
+.hand {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 50% 100%; /* obrót wokół dolnej krawędzi wskazówki (czyli centrum tarczy) */
+  /* nie ustawiaj tutaj rotate() — będziemy je nadpisywać inline, ale zachowujemy translate tutaj jako domyślne */
+  transform: translate(-50%, -100%) rotate(0deg);
+  pointer-events: none;
+}
+
+/* godzinowa */
+.hand.hour {
+  width: 8px;
+  height: 60px;
+  background: linear-gradient(#333, #111);
+  border-radius: 6px;
+  z-index: 3;
+}
+
+/* minutowa */
+.hand.minute {
+  width: 6px;
+  height: 86px;
+  background: linear-gradient(#444, #222);
+  border-radius: 6px;
+  z-index: 2;
+}
+
+/* sekundowa */
+.hand.second {
+  width: 3px;
+  height: 100px;
+  background: linear-gradient(#ff6b6b, #ff3d9a);
+  border-radius: 2px;
+  z-index: 4;
+}
+
+/* kropka na środku */
+.center-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #ccc);
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  border: 3px solid #eb5160;
+}
+
+/* ticki */
+.ticks .tick {
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  width: 4px;
+  height: 12px;
+  background: rgba(0,0,0,0.45);
+  transform-origin: 50% 120px;
+}
+
+/* cyfrowy */
+.digital {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+.digital .time {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111;
+  background: linear-gradient(90deg,#743ad5,#d53a9d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.digital .date {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* responsywność (skalowanie) */
+@media (max-width: 420px) {
+  .analog { width: 200px; height: 200px; }
+  .hand.hour { height: 48px; }
+  .hand.minute { height: 70px; }
+  .hand.second { height: 82px; }
+  .center-dot { width: 12px; height: 12px; border-width: 2px; }
+  .digital .time { font-size: 1.1rem; }
 }
