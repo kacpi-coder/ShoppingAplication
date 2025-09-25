@@ -7,26 +7,21 @@
    font-family: "Story Script", sans-serif;
 }
 
- .gradient-textarea {
-  background: linear-gradient(#343333,#4b4444) padding-box,
-              conic-gradient(from 0deg, #ff00ff, #00ffff, #ff9900, #00ff99, #ff00ff) border-box !important;
+ .textarea {
   border-radius: 12px;
-  box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff, 0 0 60px #ff9900, 0 0 80px #00ff99;
-  border: 3px solid transparent;
-  animation: rotateBorder 6s linear infinite;
+  border: none;
   resize: none;
-  color: white; /* żeby tekst był widoczny */
+  color: black;
+  background: #e8e8e8;
+  border: 2px solid #eb5160;       
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size:15px;
 }
 
-
-  @keyframes rotateBorder {
-    0% {
-      background: linear-gradient(#111,#111) padding-box, conic-gradient(from 0deg, #ff00ff, #00ffff, #ff9900, #00ff99, #ff00ff) border-box;
-    }
-    100% {
-      background: linear-gradient(#111,#111) padding-box, conic-gradient(from 360deg, #ff00ff, #00ffff, #ff9900, #00ff99, #ff00ff) border-box;
-    }
-  }
+.textarea:focus{
+outline:none;
+}
 
 
 #menu > ul > li
@@ -73,9 +68,9 @@ main, #left
 }
 
 #add, #left, main {
-  flex: 1;                     /* każdy element zajmuje równą część szerokości */
-  max-width: 31%;               /* ograniczamy maksymalną szerokość, żeby nie były za duże */
-  min-height: 700px;            /* zachowujemy wysokość */
+  flex: 1;                     
+  max-width: 31%;              
+  min-height: 700px;           
   padding: 10px;
   border-radius: 3px;
   box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.3);
@@ -97,14 +92,13 @@ main, #left
   border-right: 5px solid #eb5160;
   border-top: 5px solid #eb5160;
   padding: 10px;
-  max-height: 700px;   /* lub inna wartość odpowiadająca layoutowi */
-  overflow-y: auto;    /* przewijanie gdy zbyt dużo tasków */
+  max-height: 700px;   
+  overflow-y: auto;  
   word-wrap: break-word;
   background-color: #849e8d;
 }
 
 
-/* Styl dla każdego zadania */
 .task-box {
   margin: 10px 0;
   padding: 12px;
@@ -112,8 +106,8 @@ main, #left
   font-weight: bold;
   color: white;
   word-wrap: break-word;
-  background-color: #849e8d;       /* to samo co panel left */
-  border: 2px solid #eb5160;       /* czerwony akcent */
+  background-color: #849e8d;      
+  border: 2px solid #eb5160;       
   box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -123,7 +117,6 @@ main, #left
   box-shadow: 5px 5px 0 rgba(0,0,0,0.4);
 }
 
-/* Przycisk X dopasowany do kolorystyki */
 .task-box button {
   margin-top: 8px;
   background: #eb5160;
@@ -177,21 +170,22 @@ p
   color:black;
 }
 
-.add-btn {
-  background: none;
-  text-decoration: inherit;
-  font-family: system-ui;
-  font-size: 0.7rem;
-  padding: 1rem;
-  margin-top:1rem;
-  border: 5px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
-  cursor: pointer;
-  background-color: rgb(58, 57, 57);
+.add-btn
+{
+  margin-left:20px;
+  margin-top:20px;
+text-decoration:none;
+border:none;
+padding:20px;
+background-color:#ED6A5A;
+transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-/* Container */
+.add-btn:hover{
+  transform: scale(110%);
+  box-shadow: 5px 5px 0px rgba(255, 255, 255, 0.3);
+} 
+
 .clock-wrap {
   width: 280px;
   max-width: 90%;
@@ -201,7 +195,6 @@ p
   user-select: none;
 }
 
-/* Analog clock */
 .analog {
   position: relative;
   width: 240px;
@@ -214,13 +207,12 @@ p
   border: 6px solid rgba(235,81,96,0.95);
 }
 
-/* wskazówki - KLUCZOWE: translate(-50%,-100%) + transform-origin: 50% 100% */
+
 .hand {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform-origin: 50% 100%; /* obrót wokół dolnej krawędzi wskazówki (czyli centrum tarczy) */
-  /* nie ustawiaj tutaj rotate() — będziemy je nadpisywać inline, ale zachowujemy translate tutaj jako domyślne */
+  transform-origin: 50% 100%; 
   transform: translate(-50%, -100%) rotate(0deg);
   pointer-events: none;
 }
@@ -266,7 +258,6 @@ p
   border: 3px solid #eb5160;
 }
 
-/* ticki */
 .ticks .tick {
   position: absolute;
   left: 50%;
@@ -277,13 +268,13 @@ p
   transform-origin: 50% 120px;
 }
 
-/* cyfrowy */
 .digital {
   display: flex;
   flex-direction: column;
   gap: 6px;
   align-items: center;
 }
+
 .digital .time {
   font-size: 1.4rem;
   font-weight: 700;
@@ -293,17 +284,10 @@ p
   background-clip: text;
   color: transparent;
 }
+
 .digital .date {
   font-size: 0.9rem;
   color: #333;
 }
 
-/* responsywność (skalowanie) */
-@media (max-width: 420px) {
-  .analog { width: 200px; height: 200px; }
-  .hand.hour { height: 48px; }
-  .hand.minute { height: 70px; }
-  .hand.second { height: 82px; }
-  .center-dot { width: 12px; height: 12px; border-width: 2px; }
-  .digital .time { font-size: 1.1rem; }
-}
+

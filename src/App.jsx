@@ -29,51 +29,48 @@ function App() {
     setToDoList(newToDoList);
   };
 
-  // Oblicz kąty dla wskazówek
   const seconds = time.getSeconds();
   const minutes = time.getMinutes();
   const hours = time.getHours();
 
-  const secondDeg = seconds * 6; // 360/60
-  const minuteDeg = minutes * 6 + seconds * 0.1; // dodatkowo przesuwka sekund
-  const hourDeg = (hours % 12) * 30 + minutes * 0.5; // 360/12
+  const secondDeg = seconds * 6; 
+  const minuteDeg = minutes * 6 + seconds * 0.1; 
+  const hourDeg = (hours % 12) * 30 + minutes * 0.5; 
 
   return (
     <>
       <div id="menuFather">
         <div id="menu">
           <ul>
-            <li><a href="main.jsx">Strona Główna</a></li>
-            <li><a href="informations.jsx">Informacje</a></li>
-            <li><a href="moreAboutUs.jsx">Więcej o nas</a></li>
-            <li><a href="App.jsx">Zlecenia</a></li>
-            <li><a href="contact.jsx" >Kontakt</a></li>
+            <li><a href="App.jsx">Strona Główna</a></li>
+            <li><a href="App.jsx">Aktualności</a></li>
+            <li><a href="App.jsx">Promocje</a></li>
+            <li><a href="App.jsx">Więcej o nas</a></li>
+            <li><a href="App.jsx" >Kontakt</a></li>
           </ul>
         </div>
       </div>
 
       <div id="mainFather">
         <div id="add">
-          <h2>Stwórz swoją własną listę zadań</h2>
+          <h2>Dodaj swoje proukty do listy</h2>
           <textarea
             rows={7}
             cols={40}
             value={newTask}
-            placeholder="🔥 Wpisz coś epickiego..."
-            className="gradient-textarea"
+            placeholder="Mleko,Marchewki,Chleb..."
+            className="textarea"
             onChange={handleChange}
           />
           <br />
-          <button onClick={addTask} className="add-btn">Dodaj Task</button>
+          <button onClick={addTask} className="add-btn">   Dodaj   </button>
         </div>
        
         <main>
           <h1>Strona Główna</h1>
 
-          {/* CLOCK */}
           <div className="clock-wrap">
             <div className="analog">
-              {/* wskazówki */}
                 <div
   className="hand hour"
   style={{ transform: `translate(-50%, -100%) rotate(${hourDeg}deg)` }}
@@ -89,7 +86,7 @@ function App() {
     
               <div className="center-dot"></div>
 
-              {/* ticki godzinowe */}
+             
               <div className="ticks">
                 {[...Array(12)].map((_, i) => (
                   <div
@@ -101,7 +98,7 @@ function App() {
               </div>
             </div>
 
-            {/* cyfrowy */}
+           
             <div className="digital">
               <div className="time">
                 {time.toLocaleTimeString("pl-PL", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
@@ -114,7 +111,7 @@ function App() {
         </main>
 
         <div id="left">
-          <h2>Twoje Zaplanowane Zadania</h2>
+          <h2>Lista Zakupów</h2>
           {toDoList.map((task, index) => {
             return (
               <div key={index} className="task-box">
